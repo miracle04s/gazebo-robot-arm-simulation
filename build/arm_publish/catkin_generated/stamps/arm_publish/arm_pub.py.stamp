@@ -1,0 +1,49 @@
+#! /usr/bin/env python
+
+import rospy
+from std_msgs.msg import Float64
+
+if __name__ == "__main__":
+ 
+    rospy.init_node("talker_p")
+    
+    pub1 = rospy.Publisher("mycar/joint1_controller/command",Float64,queue_size=10)
+    pub2 = rospy.Publisher("mycar/joint2_controller/command",Float64,queue_size=10)
+    pub3 = rospy.Publisher("mycar/joint3_controller/command",Float64,queue_size=10)
+    pub4 = rospy.Publisher("mycar/joint4_controller/command",Float64,queue_size=10)
+    pub5 = rospy.Publisher("mycar/joint5_controller/command",Float64,queue_size=10)
+    pub6 = rospy.Publisher("mycar/joint6_controller/command",Float64,queue_size=10)
+    theta1 = 0.0  
+    theta2 = 0.0
+    theta3 = 0.0
+    theta4 = 0.0
+    theta5 = 0.0
+    theta6 = 0.0
+    rate = rospy.Rate(10)
+    while not rospy.is_shutdown():
+        pub1.publish(theta1)
+        pub2.publish(theta2)
+        pub3.publish(theta3)
+        pub4.publish(theta4)
+        pub5.publish(theta5)
+        pub6.publish(theta6)
+        rate.sleep()
+        rospy.loginfo("output_theta1:%s",theta1)
+        theta1 += 0.01
+        theta2 += 0.01
+        theta3 += 0.01
+        theta4 += 0.01
+        theta5 += 0.01
+        theta6 += 0.01
+        if theta1 > 3.14:
+            theta1 = -3.14
+        if theta2 > 0:
+            theta2 = -0.78
+        if theta3 > 0.78:
+            theta3 = -0.78
+        if theta4 > 3.14:
+            theta4 = -3.14
+        if theta5 > 3.14:
+            theta5 = -3.14
+        if theta6 > 3.14:
+            theta6 = -3.14
