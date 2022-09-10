@@ -1,0 +1,13 @@
+<launch>
+
+    <rosparam file="$(find demo02_urdf_gazebo)/config/joint_state_control.yaml" command="load"/>
+
+    <node name="joint_controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+          output="screen" ns="/mycar" args="joint_state_controller"/>
+
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+        respawn="false" output="screen">
+        <remap from="/joint_states" to="/mycar/joint_states" />
+    </node>
+
+</launch>

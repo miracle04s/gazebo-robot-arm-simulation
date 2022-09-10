@@ -1,0 +1,101 @@
+<robot name="kinematics" xmlns:xacro="http://wiki.ros.org/xacro">
+    <xacro:macro name="joint_trans" params="joint_name">
+        <!-- Transmission is important to link the joints and the controller -->
+        <transmission name="${joint_name}_trans">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="${joint_name}">
+                <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${joint_name}_motor">
+                <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission>
+    </xacro:macro>
+
+    <xacro:joint_trans joint_name="joint1" />
+    <xacro:joint_trans joint_name="joint2" />
+    <xacro:joint_trans joint_name="joint3" />
+    <xacro:joint_trans joint_name="joint4" />
+    <xacro:joint_trans joint_name="joint5" />
+    <xacro:joint_trans joint_name="joint6" />
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/mycar</robotNamespace>
+            <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+            <legacyMode>true</legacyMode>
+        </plugin>
+    </gazebo>
+
+    <gazebo reference="joint2">
+        <provideFeedback>true</provideFeedback>
+    </gazebo>
+    <!-- The ft_sensor plugin -->  
+    <gazebo>
+        <plugin name="ft_sensor" filename="libgazebo_ros_ft_sensor.so">
+            <updateRate>30.0</updateRate>
+            <topicName>ftsensor2_topic</topicName>
+            <jointName>joint2</jointName>
+        </plugin>
+    </gazebo>
+
+    <gazebo reference="joint1">
+        <provideFeedback>true</provideFeedback>
+    </gazebo>
+    <!-- The ft_sensor plugin -->  
+    <gazebo>
+        <plugin name="ft_sensor" filename="libgazebo_ros_ft_sensor.so">
+            <updateRate>30.0</updateRate>
+            <topicName>ftsensor1_topic</topicName>
+            <jointName>joint1</jointName>
+        </plugin>
+    </gazebo>
+
+    <gazebo reference="joint3">
+        <provideFeedback>true</provideFeedback>
+    </gazebo>
+    <!-- The ft_sensor plugin -->  
+    <gazebo>
+        <plugin name="ft_sensor" filename="libgazebo_ros_ft_sensor.so">
+            <updateRate>30.0</updateRate>
+            <topicName>ftsensor3_topic</topicName>
+            <jointName>joint3</jointName>
+        </plugin>
+    </gazebo>
+
+    <gazebo reference="joint4">
+        <provideFeedback>true</provideFeedback>
+    </gazebo>
+    <!-- The ft_sensor plugin -->  
+    <gazebo>
+        <plugin name="ft_sensor" filename="libgazebo_ros_ft_sensor.so">
+            <updateRate>30.0</updateRate>
+            <topicName>ftsensor4_topic</topicName>
+            <jointName>joint4</jointName>
+        </plugin>
+    </gazebo>
+
+    <gazebo reference="joint5">
+        <provideFeedback>true</provideFeedback>
+    </gazebo>
+    <!-- The ft_sensor plugin -->  
+    <gazebo>
+        <plugin name="ft_sensor" filename="libgazebo_ros_ft_sensor.so">
+            <updateRate>30.0</updateRate>
+            <topicName>ftsensor5_topic</topicName>
+            <jointName>joint5</jointName>
+        </plugin>
+    </gazebo>
+
+    <gazebo reference="joint6">
+        <provideFeedback>true</provideFeedback>
+    </gazebo>
+    <!-- The ft_sensor plugin -->  
+    <gazebo>
+        <plugin name="ft_sensor" filename="libgazebo_ros_ft_sensor.so">
+            <updateRate>30.0</updateRate>
+            <topicName>ftsensor6_topic</topicName>
+            <jointName>joint6</jointName>
+        </plugin>
+    </gazebo>
+</robot>

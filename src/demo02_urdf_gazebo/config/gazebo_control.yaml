@@ -1,0 +1,41 @@
+mycar:
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 100
+
+
+  joint1_controller:
+    type: "position_controllers/JointPositionController"
+    joint: joint1
+    pid_gains: {p: 100.0, i: 0.1, d: 0.1}
+
+  joint2_controller:
+    type: "position_controllers/JointPositionController"
+    joint: joint2
+    pid: {p: 100.0, i: 0.1, d: 0.1}
+
+  joint3_controller:
+    type: "position_controllers/JointPositionController"
+    joint: joint3
+    pid: {p: 100.0, i: 0.1, d: 0.1}
+
+  joint4_controller:
+    type: "position_controllers/JointPositionController"
+    joint: joint4
+    pid: {p: 100.0, i: 0.1, d: 0.1}
+
+  joint5_controller:
+    type: "position_controllers/JointPositionController"
+    joint: joint5
+    pid: {p: 100.0, i: 0.1, d: 0.1}
+
+  joint6_controller:
+    type: "position_controllers/JointPositionController"
+    joint: joint6
+    pid: {p: 100.0, i: 0.1, d: 0.1}
+
+
+
+
+
+  

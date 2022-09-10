@@ -1,0 +1,9 @@
+<launch>
+    <include file="$(find demo02_urdf_gazebo)/launch/my_car.launch"/>
+    <include file="$(find demo02_urdf_gazebo)/launch/controller.launch"/>
+    <node pkg="arm_publish" type="arm_pub.py" name="mypub" output="screen" />
+    <node pkg="arm_sub" type="arm_sub.py" name="mysub" output="screen" />
+    <!--<include file="$(find demo02_urdf_gazebo)/launch/state_control.launch"/>
+    <include file="$(find demo02_urdf_gazebo)/launch/trajectory_control.launch"/>
+    <include file="$(find moveit)/launch/moveit_planning_execution.launch"/>-->
+</launch>

@@ -1,0 +1,7 @@
+mycar/gazebo_ros_control/pid_gains:
+  joint1: {p: 100, i: 0.1, d: 100}
+  joint2: {p: 1000, i: 0.1, d: 500}
+  joint3: {p: 300, i: 0.1, d: 300}
+  joint4: {p: 50, i: 0.01, d: 10}
+  joint5: {p: 10, i: 0.01, d: 0.1}
+  joint6: {p: 10, i: 0.01, d: 0.05}

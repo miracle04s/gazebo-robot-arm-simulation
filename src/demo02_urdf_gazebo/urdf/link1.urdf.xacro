@@ -1,0 +1,42 @@
+<robot name="mycar" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <!-- link属性 -->
+    <xacro:property name="link1_radius" value="0.2" /> <!-- base_link 半径 -->
+    <xacro:property name="link1_length" value="0.2" /> <!-- base_link 长 -->
+    <xacro:property name="link1_m" value="0.5" /> <!-- 质量  -->
+    <xacro:property name="height01" value="0.12" /> <!-- 质量  -->
+    <link name="link1">
+      <visual>
+        <geometry>
+          <mesh filename="package://demo02_urdf_gazebo/stl/link_1.STL"/>
+        </geometry>
+        <origin xyz="0 0 ${height01}" rpy="${PI/2} 0 0" />
+        <material name="yellow">
+          <color rgba="0.5 0.3 0.0 0.5" />
+        </material>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://demo02_urdf_gazebo/stl/link_1.STL"/>
+        </geometry>
+        <origin xyz="0 0 ${height01}" rpy="${PI/2} 0 0" />
+      </collision>
+      <inertial>
+        <origin xyz="0.009 0.021 0.184" />
+        <mass value="4.232" />
+        <inertia ixx="36.561" ixy="4.004" ixz="2.008" iyy="38.051" iyz="-1.975" izz="58.629" />
+        <!--<inertia ixx="0.036561" ixy="0.004004" ixz="0.002008" iyy="0.038051" iyz="0" izz="0.058629" />-->
+      </inertial>
+
+    </link>
+
+    <joint name="joint1" type="continuous">
+      <parent link="base_link" />
+      <child link="link1"/>
+      <origin xyz="0 0 0" />
+      <axis xyz="0 0 1" />
+    </joint>
+    <gazebo reference="link1">
+        <material>Gazebo/Black</material>
+    </gazebo>
+
+</robot>

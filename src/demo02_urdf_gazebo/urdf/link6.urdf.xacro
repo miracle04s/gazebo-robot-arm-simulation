@@ -1,0 +1,42 @@
+<robot name="mycar" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <!-- link属性 -->
+    <xacro:property name="link6_radius" value="0.05" />
+    <xacro:property name="link6_height" value="0.4" />
+    <xacro:property name="link6_m" value="0.2" />
+    <xacro:property name="distance56" value="-0.3" /> <!-- 质量  -->
+    <link name="link6">
+      <visual>
+        <geometry>
+          <mesh filename="package://demo02_urdf_gazebo/stl/link_6.STL"/>
+        </geometry>
+        <origin xyz="0 0 -0.12" rpy="${PI/2} ${PI} 0" />
+        <material name="yellow">
+          <color rgba="0.5 0.3 0.0 0.5" />
+        </material>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://demo02_urdf_gazebo/stl/link_6.STL"/>
+        </geometry>
+        <origin xyz="0 0 -0.12" rpy="${PI/2} ${PI} 0" />
+      </collision>
+      <inertial>
+        <origin xyz="0 0 -0.1" />
+        <mass value="3.05" />
+        <inertia ixx="0.05" ixy="0" ixz="0" iyy="0.05" iyz="0" izz="0.04" />
+      </inertial>
+
+    </link>
+
+    <joint name="joint6" type="continuous">
+      <parent link="link5" />
+      <child link="link6"/>
+      <origin xyz="0 0 0.005" rpy = "${PI/2} 0 ${PI/2}"/>
+      <axis xyz="0 0 1" />
+    </joint>
+    
+    <gazebo reference="link6">
+        <material>Gazebo/Yellow</material>
+    </gazebo>
+
+</robot>
