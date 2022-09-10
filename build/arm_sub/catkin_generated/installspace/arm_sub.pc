@@ -1,0 +1,8 @@
+prefix=/home/ss/simulation02/install
+
+Name: arm_sub
+Description: Description of arm_sub
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
